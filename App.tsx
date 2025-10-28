@@ -18,6 +18,7 @@ import DiningPage from './components/DiningPage';
 import BedroomPage from './components/BedroomPage';
 import LivingRoomPage from './components/LivingRoomPage';
 import OfficePage from './components/OfficePage';
+import AboutPage from './components/AboutPage';
 
 const products: Product[] = [
   {
@@ -261,7 +262,7 @@ const bedroomProducts: Product[] = [
     // Nightstands
     { id: 44, name: 'Fluted Wooden Nightstand', category: 'Bedroom', subCategory: 'Nightstands', price: '₹15,000', imageUrl: 'https://i.pinimg.com/564x/c9/4c/32/c94c320704dc17de2e3f53c150c82156.jpg', description: 'Sculptural fluted detailing adds a touch of modern elegance.', details: [] },
     { id: 45, name: 'Marble Top Nightstand', category: 'Bedroom', subCategory: 'Nightstands', price: '₹18,500', imageUrl: 'https://i.pinimg.com/564x/a4/6a/6a/a46a6a575e7a931a783852de2d8541e2.jpg', description: 'A luxurious touch of marble for your bedside essentials.', details: [] },
-    { id: 46, name: 'Minimalist Floating Nightstand', category: 'Bedroom', subCategory: 'Nightstands', price: '₹12,000', imageUrl: 'https://i.pinimg.com/564x/c1/f2/a5/c1f2a58b5b707475d55b8e967272719c.jpg', description: 'Wall-mounted design for a clean, contemporary, and spacious feel.', details: [] },
+    { id: 46, name: 'Minimalist Floating Nightstand', category: 'Bedroom', subCategory: 'Nightstands', price: '₹12,000', imageUrl: 'https://i.pinimg.com/564x/c1/f2/a5/c1f2/a58b5b707475d55b8e967272719c.jpg', description: 'Wall-mounted design for a clean, contemporary, and spacious feel.', details: [] },
     // Dressers
     { id: 47, name: 'Wide Oak 6-Drawer Dresser', category: 'Bedroom', subCategory: 'Dressers', price: '₹45,000', imageUrl: 'https://i.pinimg.com/564x/9a/99/38/9a9938749a37659b85c21966cb4b150c.jpg', description: 'Spacious and stylish, with clean lines and ample storage in solid oak.', details: [] },
     { id: 48, name: 'Cane Front 3-Drawer Dresser', category: 'Bedroom', subCategory: 'Dressers', price: '₹38,000', imageUrl: 'https://i.pinimg.com/564x/ef/76/4a/ef764a819c629231f415309d57a4a12c1.jpg', description: 'Natural cane webbing on drawer fronts for a warm, textural element.', details: [] },
@@ -283,7 +284,7 @@ const livingRoomProducts: Product[] = [
     { id: 54, name: 'Leather Sling Chair', category: 'Living Room', subCategory: 'Accent Chairs', price: '₹35,000', imageUrl: 'https://i.pinimg.com/564x/0f/25/89/0f258957454247814b7e80459a99863a.jpg', description: 'An effortlessly stylish chair with a relaxed leather sling and solid wood frame.', details: [] },
     { id: 55, name: 'Emerald Velvet Armchair', category: 'Living Room', subCategory: 'Accent Chairs', price: '₹42,000', imageUrl: 'https://i.pinimg.com/564x/b8/08/49/b8084992525381a8b965f70093d58a5f.jpg', description: 'A jewel-toned armchair that adds a pop of sophisticated color and comfort.', details: [] },
     // Bookshelves & Consoles
-    { id: 56, name: 'Minimalist Wall Shelf', category: 'Living Room', subCategory: 'Bookshelves & Consoles', price: '₹18,000', imageUrl: 'https://i.pinimg.com/564x/6c/27/a2/6c27a264e03b22b0f449a0d8591350a4.jpg', description: 'Sleek, floating shelves for a modern and uncluttered display.', details: [] },
+    { id: 56, name: 'Minimalist Wall Shelf', category: 'Living Room', subCategory: 'Bookshelves & Consoles', price: '₹18,000', imageUrl: 'https://i.pinimg.com/564x/6c/27/a2/6c27a264e03b22b0a42e557b4474768f5c.jpg', description: 'Sleek, floating shelves for a modern and uncluttered display.', details: [] },
     { id: 57, name: 'Fluted Media Console', category: 'Living Room', subCategory: 'Bookshelves & Consoles', price: '₹48,000', imageUrl: 'https://i.pinimg.com/564x/8a/89/88/8a89886a87752e259b626456a0c5af56.jpg', description: 'An elegant media console with trendy fluted details and ample storage.', details: [] },
     { id: 58, name: 'Tall Metal Bookshelf', category: 'Living Room', subCategory: 'Bookshelves & Consoles', price: '₹36,000', imageUrl: 'https://i.pinimg.com/564x/87/00/36/87003636f324a0dff5b1062a4d3527e0.jpg', description: 'An industrial-chic bookshelf with a strong metal frame and wooden shelves.', details: [] },
 ];
@@ -304,7 +305,7 @@ const officeProducts: Product[] = [
 ];
 
 
-type Page = 'home' | 'dining' | 'bedroom' | 'living' | 'office';
+type Page = 'home' | 'dining' | 'bedroom' | 'living' | 'office' | 'about';
 
 const App: React.FC = () => {
   const [currentPage, setCurrentPage] = useState<Page>('home');
@@ -346,6 +347,8 @@ const App: React.FC = () => {
         return <LivingRoomPage products={livingRoomProducts} onProductSelect={handleProductSelect} />;
       case 'office':
         return <OfficePage products={officeProducts} onProductSelect={handleProductSelect} />;
+      case 'about':
+        return <AboutPage />;
       case 'home':
       default:
         return (

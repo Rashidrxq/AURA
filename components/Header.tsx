@@ -2,14 +2,13 @@ import React, { useState, useEffect } from 'react';
 import { SearchIcon, UserIcon, ShoppingBagIcon } from './Icon';
 
 interface HeaderProps {
-    onNavigate: (page: 'home' | 'dining' | 'bedroom' | 'living' | 'office') => void;
+    onNavigate: (page: 'home' | 'dining' | 'bedroom' | 'living' | 'office' | 'about') => void;
 }
 
 const Header: React.FC<HeaderProps> = ({ onNavigate }) => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isShopDropdownOpen, setShopDropdownOpen] = useState(false);
-  const navLinks = ['Home', 'About', 'Contact'];
-
+  
   useEffect(() => {
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 20);
@@ -18,7 +17,7 @@ const Header: React.FC<HeaderProps> = ({ onNavigate }) => {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  const handleNavigation = (page: 'home' | 'dining' | 'bedroom' | 'living' | 'office') => {
+  const handleNavigation = (page: 'home' | 'dining' | 'bedroom' | 'living' | 'office' | 'about') => {
     onNavigate(page);
     setShopDropdownOpen(false); // Close dropdown on navigation
   };
@@ -73,9 +72,8 @@ const Header: React.FC<HeaderProps> = ({ onNavigate }) => {
           {/* Right Navigation & Icons */}
           <div className="flex items-center justify-end">
              <nav className="hidden md:flex items-center space-x-8">
-              {navLinks.slice(1).map(link => (
-                <a key={link} href="#" className="text-sm tracking-wider uppercase font-poppins hover:text-gold-accent transition-colors duration-300">{link}</a>
-              ))}
+                <button onClick={() => handleNavigation('about')} className="text-sm tracking-wider uppercase font-poppins hover:text-gold-accent transition-colors duration-300">About</button>
+                <a href="#" className="text-sm tracking-wider uppercase font-poppins hover:text-gold-accent transition-colors duration-300">Contact</a>
             </nav>
             <div className="flex items-center space-x-6 ml-8">
                 <button aria-label="Search" className="hover:text-gold-accent transition-colors duration-300"><SearchIcon className="h-5 w-5"/></button>

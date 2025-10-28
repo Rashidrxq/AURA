@@ -1,5 +1,4 @@
 import React, { useState, useEffect, useRef } from 'react';
-// Fix: Import `Chat` type and use `ai.chats.create` for conversation.
 import { GoogleGenAI, Chat } from '@google/genai';
 import { CloseIcon, SendIcon } from './Icon';
 
@@ -19,7 +18,6 @@ const SupportAssistant: React.FC<SupportAssistantProps> = ({ isOpen, onClose }) 
   const [isLoading, setIsLoading] = useState(false);
   const chatContainerRef = useRef<HTMLDivElement>(null);
   const hasInitialized = useRef(false);
-  // Fix: Use a ref to store the chat session instance.
   const chatRef = useRef<Chat | null>(null);
 
   const systemInstruction = `You are a friendly and knowledgeable customer support assistant for AURA, a premium interior design and furniture store.
@@ -35,7 +33,6 @@ const SupportAssistant: React.FC<SupportAssistantProps> = ({ isOpen, onClose }) 
     Keep answers short, aesthetic, and helpful.`;
 
   useEffect(() => {
-    // Fix: Initialize the chat session when the assistant is opened for the first time.
     if (isOpen && !hasInitialized.current) {
       const ai = new GoogleGenAI({ apiKey: process.env.API_KEY as string });
       chatRef.current = ai.chats.create({
@@ -64,7 +61,6 @@ const SupportAssistant: React.FC<SupportAssistantProps> = ({ isOpen, onClose }) 
     setIsLoading(true);
 
     try {
-        // Fix: Use the chat session to send a message, which correctly handles history.
         const response = await chatRef.current.sendMessage({ message: messageToSend });
         setMessages(prev => [...prev, { role: 'model', text: response.text }]);
     } catch (error) {
