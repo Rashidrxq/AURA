@@ -1,5 +1,5 @@
-
 import React from 'react';
+import AnimateOnScroll from './AnimateOnScroll';
 
 const Hero: React.FC = () => {
   return (
@@ -9,15 +9,21 @@ const Hero: React.FC = () => {
     >
       <div className="absolute inset-0 bg-black opacity-40"></div>
       <div className="relative z-10 text-center text-ivory p-4">
-        <h1 className="text-5xl md:text-7xl font-playfair font-bold mb-4 leading-tight">
-          Timeless Design for Modern Living
-        </h1>
-        <p className="font-poppins text-lg md:text-xl max-w-2xl mx-auto mb-8 font-light">
-          Discover our curated collection of luxury furniture, crafted with passion and precision to elevate your space.
-        </p>
-        <button className="bg-gold-accent text-white font-poppins uppercase tracking-widest text-sm font-semibold px-10 py-4 rounded-full hover:bg-opacity-90 transition-all duration-300 shadow-lg">
-          Shop Now
-        </button>
+        <AnimateOnScroll initialClass="opacity-0 translate-y-5" finalClass="opacity-100 translate-y-0">
+            <h1 className="text-5xl md:text-7xl font-playfair font-bold mb-4 leading-tight">
+            Timeless Design for Modern Living
+            </h1>
+        </AnimateOnScroll>
+        <AnimateOnScroll initialClass="opacity-0 translate-y-5" finalClass="opacity-100 translate-y-0" delay={200}>
+            <p className="font-poppins text-lg md:text-xl max-w-2xl mx-auto mb-8 font-light">
+            Discover our curated collection of luxury furniture, crafted with passion and precision to elevate your space.
+            </p>
+        </AnimateOnScroll>
+        <AnimateOnScroll initialClass="opacity-0 translate-y-5" finalClass="opacity-100 translate-y-0" delay={400}>
+            <button className="bg-gold-accent text-white font-poppins uppercase tracking-widest text-sm font-semibold px-10 py-4 rounded-full hover:bg-opacity-90 transition-all duration-300 shadow-lg">
+            Shop Now
+            </button>
+        </AnimateOnScroll>
       </div>
     </section>
   );
